@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 // global styles that affects the whole app
 // you can add more if needed
 const GlobalStyle = createGlobalStyle`
@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     width: 100vw;
-    height: 100vh;
   }
 
   .content {

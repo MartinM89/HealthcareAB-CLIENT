@@ -1,0 +1,33 @@
+.layout-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr 50px;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+
+  @media (max-width: 800px) {
+    grid-template-rows: 1fr 50px 100px;
+    grid-template-areas:
+      'main'
+      'footer'
+      'header';
+
+    .header {
+      bottom: 0;
+    }
+  }
+}
+
+.header {
+  grid-area: header;
+}
+
+.layout__main-style {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}
