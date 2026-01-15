@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
 import { AuthProvider } from './context/AuthContext';
 import Login from './components/Login';
 import UserDashboard from './components/UserDashboard';
@@ -6,33 +7,35 @@ import AdminDashboard from './components/AdminDashboard';
 import Unauthorized from './components/Unauthorized';
 import Home from './components/Home';
 import RequireAuth from './components/RequireAuth';
-import GlobalStyle from './styles/GlobalStyle';
+import './styles/root.css';
 
 // AuthProvider must wrap Router to ensure auth state is available to all routes
 function App() {
   return (
     <AuthProvider>
-      <GlobalStyle />
-      <div className='content'>
-        <Router>
-          <Routes>
+      <Router>
+        <Routes>
+          <Route
+            path='/'
+            element={<Layout />}
+          >
             {/* Public routes - accessible without authentication */}
             <Route
-              path='/'
+              index
               element={<Home />}
             />
             <Route
-              path='/login'
+              path='login'
               element={<Login />}
             />
             <Route
-              path='/unauthorized'
+              path='unauthorized'
               element={<Unauthorized />}
             />
 
             {/* Protected routes - require authentication and specific roles */}
             <Route
-              path='/user/dashboard'
+              path='user/dashboard'
               element={
                 <RequireAuth allowedRoles={['PATIENT']}>
                   <UserDashboard />
@@ -40,7 +43,7 @@ function App() {
               }
             />
             <Route
-              path='/admin/dashboard'
+              path='admin/dashboard'
               element={
                 <RequireAuth allowedRoles={['CAREGIVER']}>
                   <AdminDashboard />
@@ -58,9 +61,9 @@ function App() {
                 />
               }
             />
-          </Routes>
-        </Router>
-      </div>
+          </Route>
+        </Routes>
+      </Router>
     </AuthProvider>
   );
 }

@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.button {
+  cursor: pointer;
+  padding: 10px 30px;
+  background-color: hsl(179, 92%, 25%);
+  border: solid 2px hsl(179, 92%, 24%);
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 3rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease, border 0.3s ease;
+
+  &:hover {
+    background-color: #2fadaa;
+    border: solid 2px #32b8b6;
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  }
+}

@@ -1,9 +1,9 @@
-import axios from "axios";
-import { useAuth } from "../hooks/useAuth";
-import { initialAuthState } from "../context/AuthContext";
+import axios from 'axios';
+import { useAuth } from '../hooks/useAuth';
+import { initialAuthState } from '../context/AuthContext';
 
 // API endpoint for logout
-const LOGOUT_URL = "http://localhost:5256/api/Auth/logout";
+const LOGOUT_URL = 'http://localhost:5256/api/Auth/logout';
 
 // Clears the server session and resets client-side auth state
 const Logout = () => {
@@ -24,13 +24,20 @@ const Logout = () => {
       // This prevents stale state issues on subsequent logins
       setAuthState(initialAuthState);
 
-      window.location.href = "/login";
+      window.location.href = '/login';
     } catch (error) {
-      console.error("Error logging out:", error);
+      console.error('Error logging out:', error);
     }
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return (
+    <button
+      className='button'
+      onClick={handleLogout}
+    >
+      Logout
+    </button>
+  );
 };
 
 export default Logout;
