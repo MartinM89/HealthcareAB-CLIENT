@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { useState } from "react";
-import axios from "axios";
-import { useAuth } from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
+import { useState } from 'react';
+import axios from 'axios';
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 // API endpoint for login
-const LOGIN_URL = "http://localhost:5256/api/Auth/login";
+const LOGIN_URL = 'http://localhost:5256/api/Auth/login';
 
 // Styled components for login page layout
 const LoginContainer = styled.div`
@@ -24,8 +24,7 @@ const LoginButton = styled.button`
   font-weight: 600;
   color: #fff;
   margin-top: 40px;
-  transition: background-color 0.3s ease, transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
   border: none;
 
@@ -67,76 +66,75 @@ function Login() {
   const { setAuthState } = useAuth();
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
-  const handleInputChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleInputChange = e => {
+    setCredentials(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = async e => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:5256/api/Auth/login",
-        credentials,
-        {
-          // withCredentials: true is required for the server to set HTTP-only cookies
-          // This is essential for cookie-based authentication
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post('http://localhost:5256/api/Auth/login', credentials, {
+        // withCredentials: true is required for the server to set HTTP-only cookies
+        // This is essential for cookie-based authentication
+        withCredentials: true,
+      });
 
-      console.log("Login successful:", JSON.stringify(response.data));
+      console.log('Login successful:', JSON.stringify(response.data));
 
-      const { loggedInUser, roles } = response.data;
+      const { username, roles } = response.data;
 
       // Update global auth state with user information
       setAuthState({
         isAuthenticated: true,
-        user: loggedInUser,
+        user: username,
         roles: roles,
       });
 
       // Redirect based on user role
-      if (roles.includes("Admin")) {
-        navigate("/admin/dashboard", { replace: true });
+      if (roles.includes('CAREGIVER')) {
+        navigate('/admin/dashboard', { replace: true });
       } else {
-        navigate("/user/dashboard", { replace: true });
+        navigate('/user/dashboard', { replace: true });
       }
     } catch (error) {
-      console.error("Login failed:", error.response || error);
-      setError("Invalid username or password");
+      console.error('Login failed:', error.response || error);
+      setError('Invalid username or password');
     }
   };
 
   return (
     <LoginContainer>
       <Title>Login</Title>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <FormWrapper onSubmit={handleLogin} aria-label="Login form">
-        <label htmlFor="username">Username:</label>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <FormWrapper
+        onSubmit={handleLogin}
+        aria-label='Login form'
+      >
+        <label htmlFor='username'>Username:</label>
         <StyledInput
-          id="username"
-          name="username"
-          type="text"
+          id='username'
+          name='username'
+          type='text'
           value={credentials.username}
           onChange={handleInputChange}
           required
         />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor='password'>Password:</label>
         <StyledInput
-          id="password"
-          name="password"
-          type="password"
+          id='password'
+          name='password'
+          type='password'
           value={credentials.password}
           onChange={handleInputChange}
           required
         />
-        <LoginButton type="submit">Login</LoginButton>
+        <LoginButton type='submit'>Login</LoginButton>
       </FormWrapper>
     </LoginContainer>
   );
