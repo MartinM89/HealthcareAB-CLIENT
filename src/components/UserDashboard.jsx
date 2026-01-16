@@ -1,7 +1,8 @@
-import { useAuth } from '../hooks/useAuth';
-import Logo from '../assets/health_care_logo.svg';
-import styled from 'styled-components';
-import Logout from './Logout';
+import { useAuth } from "../hooks/useAuth";
+import Logo from "../assets/health_care_logo.svg";
+import styled from "styled-components";
+import Logout from "./Logout";
+import CreateBookingButton from "./CreateBookingButton";
 
 // Styled components for user dashboard layout
 const UserContainer = styled.div`
@@ -31,12 +32,10 @@ function UserDashboard() {
 
   return (
     <UserContainer>
-      <LogoContainer
-        src={Logo}
-        alt='Health Care Logo'
-      />
+      <LogoContainer src={Logo} alt="Health Care Logo" />
       <Title>User Dashboard</Title>
       <Text>Welcome, {user}!</Text>
+      <CreateBookingButton />
       <Logout />
     </UserContainer>
   );
