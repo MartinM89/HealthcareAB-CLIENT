@@ -24,6 +24,9 @@ export default function CreateBooking() {
       setTimeSlots(data);
     }
     fetchTimeSlots();
+
+    setTimeSlotId(undefined);
+    setScheduleId(undefined);
   }, [value]);
 
   const handleBooking = async () => {
