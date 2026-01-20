@@ -12,8 +12,10 @@ export default function CreateBooking() {
   const [scheduleId, setScheduleId] = useState();
   const [comment, setComment] = useState("");
   const dateStr = value.getFullYear() + "-" + String(value.getMonth() + 1).padStart(2, "0") + "-" + value.getDate();
-  const today = new Date();
-  today.setDate(today.getDate() - 1);
+  const minBookingDate = new Date();
+  minBookingDate.setDate(minBookingDate.getDate() - 1);
+  const maxBookingDate = new Date();
+  maxBookingDate.setDate(maxBookingDate.getDate() + 30);
 
   useEffect(() => {
     async function fetchTimeSlots() {
@@ -58,7 +60,7 @@ export default function CreateBooking() {
       {/* <select name="" id=""></select> */}
       <div className="create-booking-container__calender">
         <div className="calendar-wrapper">
-          <Calendar onChange={setValue} value={value} locale="sv-SE" tileDisabled={({ date }) => date < today} />
+          <Calendar onChange={setValue} value={value} locale="sv-SE" tileDisabled={({ date }) => date < minBookingDate || date > maxBookingDate} />
         </div>
       </div>
       <div className="create-booking-container__time-slots">
