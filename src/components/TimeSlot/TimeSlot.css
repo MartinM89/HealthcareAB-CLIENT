@@ -1,0 +1,11 @@
+.activeTimeSlot {
+  background-color: rgb(58, 61, 235) !important;
+}
+
+.activeTimeSlot:hover {
+  background-color: rgb(86, 89, 243) !important;
+}
+
+.activeTimeSlot:active {
+  background-color: rgb(50, 53, 226) !important;
+}
