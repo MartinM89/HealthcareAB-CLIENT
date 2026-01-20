@@ -66,7 +66,14 @@ export default function CreateBooking() {
           <TimeSlot props={{ ts, value, setTimeSlotId, setScheduleId, timeSlotId }} />
         ))}
       </div>
-      <textarea className="create-booking-container__text-area" name="" id="" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+      <textarea
+        className="create-booking-container__text-area"
+        name=""
+        id=""
+        placeholder="Lämna en kommentar"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      ></textarea>
       <button className="create-booking-container__create-btn" onClick={handleBooking}>
         Boka
       </button>
