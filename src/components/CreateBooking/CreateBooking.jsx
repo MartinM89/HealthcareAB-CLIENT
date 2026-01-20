@@ -17,16 +17,15 @@ export default function CreateBooking() {
 
   useEffect(() => {
     async function fetchTimeSlots() {
-      const result = await fetch(`${import.meta.env.VITE_BASE_URL}Booking/available-timeslots?date=${dateStr}`); // flex date
+      const result = await fetch(`${import.meta.env.VITE_BASE_URL}Booking/available-timeslots?date=${dateStr}`);
       const data = await result.json();
       setTimeSlots(data);
     }
     fetchTimeSlots();
   }, [value]);
 
-  const timeSlot = timeSlots.find((ts) => ts?.["id"] === timeSlotId);
   const handleBooking = async () => {
-    // const dateStr = value.getFullYear() + "-" + String(value.getMonth() + 1).padStart(2, "0") + "-" + value.getDate();
+    const timeSlot = timeSlots.find((ts) => ts?.["id"] === timeSlotId);
     const request = {
       comment: comment,
       start: timeSlot.start,
@@ -44,8 +43,13 @@ export default function CreateBooking() {
       body: JSON.stringify(request),
     });
 
+    //* Confirm to user that their booking has been created using data
     const data = await result.json();
-    console.log(data);
+
+    setValue(new Date());
+    setTimeSlotId(undefined);
+    setScheduleId(undefined);
+    setComment("");
   };
 
   return (
@@ -59,10 +63,10 @@ export default function CreateBooking() {
       </div>
       <div className="create-booking-container__time-slots">
         {timeSlots.map((ts) => (
-          <TimeSlot props={{ ts, value, setTimeSlotId, setScheduleId }} />
+          <TimeSlot props={{ ts, value, setTimeSlotId, setScheduleId, timeSlotId }} />
         ))}
       </div>
-      <textarea className="create-booking-container__text-area" name="" id=""></textarea>
+      <textarea className="create-booking-container__text-area" name="" id="" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
       <button className="create-booking-container__create-btn" onClick={handleBooking}>
         Boka
       </button>
