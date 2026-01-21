@@ -2,12 +2,6 @@ import { useState, useEffect } from "react";
 import "./BookingFuture.css";
 import "../../Bookinginfo/bookinginfo.css";
 import { fetchBookings, fetchCancelBooking } from "../../../../api/BookingApi";
-//   Id: Guid;
-//   Comment: string;
-//   CreatedAt: DateTime;
-//   Date: DateOnly;
-//   Start: TimeOnly;
-//   End: TimeOnly;
 
 export default function BookingFuture() {
   const [bookings, setBookings] = useState([]);
