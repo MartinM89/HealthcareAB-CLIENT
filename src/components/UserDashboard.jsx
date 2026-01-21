@@ -3,6 +3,7 @@ import Logo from "../assets/health_care_logo.svg";
 import styled from "styled-components";
 import Logout from "./Logout";
 import CreateBookingButton from "./CreateBookingButton";
+import BookingInfo from "./Bookinginfo/BookingInfo";
 
 // Styled components for user dashboard layout
 const UserContainer = styled.div`
@@ -35,6 +36,7 @@ function UserDashboard() {
       <LogoContainer src={Logo} alt="Health Care Logo" />
       <Title>User Dashboard</Title>
       <Text>Welcome, {user}!</Text>
+      <BookingInfo />
       <CreateBookingButton />
       <Logout />
     </UserContainer>

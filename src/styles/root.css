@@ -13,6 +13,10 @@
   --fs-xl: 2rem;
   --fs-xxl: 3rem;
 
+  --margin-sm: 8px;
+  --margin-md: 16px;
+  --margin-lg: 24px;
+
   --fg-clr-light: rgb(240, 240, 240);
   --fg-clr-dark: rgb(25, 25, 25);
 
