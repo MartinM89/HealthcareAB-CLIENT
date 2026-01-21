@@ -1,0 +1,21 @@
+#cancel {
+  background-color: rgb(191, 50, 50);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--fs-md);
+  transition:
+    transform 0.1s ease,
+    background-color 0.2s ease;
+}
+
+#cancel:hover {
+  background-color: var(--bg-dark);
+  transform: scale(1.04);
+}
+
+#cancel:active {
+  transform: scale(0.96);
+}
