@@ -19,7 +19,10 @@ export default function CreateBooking() {
 
   useEffect(() => {
     async function fetchTimeSlots() {
-      const result = await fetch(`${import.meta.env.VITE_BASE_URL}Booking/available-timeslots?date=${dateStr}`);
+      const result = await fetch(`${import.meta.env.VITE_BASE_URL}TimeSlot/available-timeslots?date=${dateStr}`, {
+        method: "GET",
+        credentials: "include",
+      });
       const data = await result.json();
       setTimeSlots(data);
     }
@@ -39,7 +42,7 @@ export default function CreateBooking() {
       scheduleId: scheduleId,
     };
 
-    const result = await fetch(`${import.meta.env.VITE_BASE_URL}Booking`, {
+    const result = await fetch(`${import.meta.env.VITE_BASE_URL}Booking/create-booking`, {
       method: "POST",
       credentials: "include",
       headers: {
