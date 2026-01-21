@@ -5,7 +5,6 @@ import { fetchBookings, fetchCancelBooking } from "../../../../api/BookingApi";
 
 export default function BookingFuture() {
   const [bookings, setBookings] = useState([]);
-  const [bookingId, setBookingId] = useState(null);
 
   useEffect(() => {
     async function getBookings() {
@@ -15,19 +14,14 @@ export default function BookingFuture() {
     getBookings();
   }, []);
 
-  useEffect(() => {
-    if (!bookingId) return;
-    async function cancelBooking() {
-      try {
-        await fetchCancelBooking(bookingId);
-      } finally {
-        setBookingId(null);
-        const data = await fetchBookings();
-        setBookings(data.upcoming);
-      }
+  async function cancelBooking(bookingId) {
+    try {
+      await fetchCancelBooking(bookingId);
+    } finally {
+      const data = await fetchBookings();
+      setBookings(data.upcoming);
     }
-    cancelBooking();
-  }, [bookingId]);
+  }
 
   return bookings.length > 0 ? (
     bookings.map((booking) => (
@@ -50,8 +44,8 @@ export default function BookingFuture() {
               <p> Mag och tarm</p>
             </div>
             <div className="bookinginfo-content__selector">
-              <button id="cancel" onClick={() => setBookingId(booking.id)}>
-                <label htmlFor="cancel">Avboka</label>
+              <button className="cancel" onClick={() => cancelBooking(booking.id)}>
+                Avboka
               </button>
             </div>
           </div>
