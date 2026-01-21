@@ -59,6 +59,6 @@ export default function BookingFuture() {
       </div>
     ))
   ) : (
-    <p>Du har inga kommande bokningar.</p>
+    <p>Du har inga kommande besök.</p>
   );
 }
