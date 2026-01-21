@@ -22,11 +22,10 @@ export default function BookingFuture() {
   }, []);
 
   useEffect(() => {
+    if (!bookingId) return;
     async function cancelBooking() {
       try {
         await fetchCancelBooking(bookingId);
-      } catch (err) {
-        console.error(err);
       } finally {
         setBookingId(null);
         const data = await fetchBookings();
@@ -34,7 +33,6 @@ export default function BookingFuture() {
       }
     }
     cancelBooking();
-    console.log("Canceled booking with ID:", typeof bookingId, bookingId);
   }, [bookingId]);
 
   return bookings.length > 0 ? (
