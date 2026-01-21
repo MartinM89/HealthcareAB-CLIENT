@@ -3,16 +3,16 @@
   display: grid;
   grid-template-rows: 100px 1fr 50px;
   grid-template-areas:
-    'header'
-    'main'
-    'footer';
+    "header"
+    "main"
+    "footer";
 
   @media (max-width: 800px) {
     grid-template-rows: 1fr 50px 100px;
     grid-template-areas:
-      'main'
-      'footer'
-      'header';
+      "main"
+      "footer"
+      "header";
 
     .header {
       bottom: 0;
@@ -26,6 +26,7 @@
 
 .layout__main-style {
   grid-area: main;
+  padding: 0 0.5rem 2rem 0.5rem;
 }
 
 .footer {
