@@ -3,7 +3,7 @@ import Logo from "../assets/health_care_logo.svg";
 import styled from "styled-components";
 import Logout from "./Logout";
 import CreateBookingButton from "./CreateBookingButton";
-import BookingInfo from "./Bookinginfo/BookingInfo";
+import BookingInfo from "../components/Bookinginfo/Bookinginfo";
 
 // Styled components for user dashboard layout
 const UserContainer = styled.div`
