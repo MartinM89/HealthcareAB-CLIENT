@@ -33,7 +33,7 @@ function AdminDashboard() {
     <AdminContainer>
       <LogoContainer src={Logo} alt="Health Care Logo" />
       <Title>Admin Dashboard</Title>
-      <Text>Welcome, {user}!</Text>
+      <Text>Välkommen, {user}!</Text>
       <Logout />
     </AdminContainer>
   );
