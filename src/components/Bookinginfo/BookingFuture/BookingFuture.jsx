@@ -36,13 +36,11 @@ export default function BookingFuture() {
               {booking.start.substring(0, 5)} - {booking.end.substring(0, 5)}
             </span>
             <br />
-            <i className="bi bi-person-circle"></i>
-            <span>Nisse Nissesson</span>
+            <i class="bi bi-buildings"></i>
+            <span> Mag och tarm</span>
           </div>
           <div className="bookinginfo-content__changes .flex-column">
-            <div className="bookinginfo-content__department">
-              <p> Mag och tarm</p>
-            </div>
+            <div className="bookinginfo-content__department"></div>
             <div className="bookinginfo-content__selector">
               <button className="cancel-button" onClick={() => cancelBooking(booking.id)}>
                 Avboka
