@@ -5,6 +5,10 @@
   padding: 1rem;
 }
 
+.back-btn {
+  width: 10rem;
+}
+
 .create-booking-container__title {
   background-color: var(--bg-dark);
   font-weight: 700;
