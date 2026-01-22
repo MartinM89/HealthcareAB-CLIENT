@@ -44,7 +44,7 @@ export default function BookingFuture() {
               <p> Mag och tarm</p>
             </div>
             <div className="bookinginfo-content__selector">
-              <button className="cancel" onClick={() => cancelBooking(booking.id)}>
+              <button className="cancel-button" onClick={() => cancelBooking(booking.id)}>
                 Avboka
               </button>
             </div>
