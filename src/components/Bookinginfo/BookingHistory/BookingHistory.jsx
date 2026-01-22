@@ -24,7 +24,7 @@ export default function BookingHistory() {
           <div className="bookinginfo-content__description .flex-column">
             <i className="bi bi-clock"></i>
             <span>
-              {booking.start} - {booking.end}
+              {booking.start.substring(0, 5)} - {booking.end.substring(0, 5)}
             </span>
             <br />
             <i className="bi bi-person-circle"></i>
