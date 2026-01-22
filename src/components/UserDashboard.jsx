@@ -35,7 +35,7 @@ function UserDashboard() {
     <UserContainer>
       <LogoContainer src={Logo} alt="Health Care Logo" />
       <Title>User Dashboard</Title>
-      <Text>Welcome, {user}!</Text>
+      <Text>Välkommen, {user}!</Text>
       <BookingInfo />
       <CreateBookingButton />
       <Logout />
