@@ -4,6 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import "./calendar.css";
 import "./CreateBooking.css";
 import TimeSlot from "../TimeSlot/TimeSlot";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateBooking() {
   const [timeSlots, setTimeSlots] = useState([]);
@@ -16,6 +17,8 @@ export default function CreateBooking() {
   minBookingDate.setDate(minBookingDate.getDate() - 1);
   const maxBookingDate = new Date();
   maxBookingDate.setDate(maxBookingDate.getDate() + 30);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchTimeSlots() {
@@ -31,6 +34,10 @@ export default function CreateBooking() {
     setTimeSlotId(undefined);
     setScheduleId(undefined);
   }, [value]);
+
+  const handleBack = () => {
+    navigate("/user/dashboard");
+  };
 
   const handleBooking = async () => {
     const timeSlot = timeSlots.find((ts) => ts?.["id"] === timeSlotId);
@@ -62,6 +69,9 @@ export default function CreateBooking() {
 
   return (
     <div className="create-booking-container">
+      <button className="back-btn" onClick={handleBack}>
+        Tillbaka
+      </button>
       <h1 className="create-booking-container__title">BOKA TID</h1>
       {/* <select name="" id=""></select> */}
       <div className="create-booking-container__calender">
